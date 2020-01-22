@@ -1,0 +1,6 @@
+{{-- TODO change by real form --}}
+{{-- Its default form, generate by column type and column name of table of class --}}
+
+@foreach($item->generateFields() as $field)
+    @include("vendor.crud-generator.fields.{$field->getType()}", ['field' => $field, 'entity' => $item])
+@endforeach

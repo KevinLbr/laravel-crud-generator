@@ -1,0 +1,24 @@
+{
+    "name": "ckcnet/crud-generator",
+    "description": "Generate crud",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kevin Labre",
+            "email": "kevin@ckc-net.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ckcnet\\crud-generator\\CrudGeneratorServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "CkcNet\\CrudGenerator\\": "src"
+        }
+    }
+}

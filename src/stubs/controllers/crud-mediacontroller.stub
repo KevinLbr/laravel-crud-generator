@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Requests\DummyClassRequest;
+use App\Models\DummyClass;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DummyClassController extends Controller
+{
+    /* ------------------------- */
+    /* For crud */
+    /* ------------------------- */
+	protected $name;
+	protected $plurial_name;
+	protected $gender_male;
+
+	public function __construct()
+	{
+		$this->name = 'item';
+		$this->plurial_name = 'items';
+		$this->gender_male = true;
+	}
+
+    public function index()
+    {
+   	    $items = DummyClass::all();
+   	    $fillables = DummyClass::getFillablesModel();
+
+   	    return view('admin.dummy_directory.index', compact('items', 'fillables'))
+				->with('plurial_name', $this->plurial_name)
+				->with('name', $this->name)
+				->with('gender_male', $this->gender_male);
+    }
+
+    public function create()
+    {
+	    return view('admin.dummy_directory.create')
+				->with('plurial_name', $this->plurial_name)
+				->with('name', $this->name)
+				->with('gender_male', $this->gender_male);
+    }
+
+    public function store(DummyClassRequest $request)
+    {
+	    $item = DummyClass::create($request->all());
+	    $item->setMedia($request);
+	    session()->flash('notification', ['type' => 'success', 'text' => 'L\'élement a été créé']);
+	    return redirect()->route('dummy_route.index');
+    }
+
+    public function edit(DummyClass $item)
+    {
+	    return view('admin.dummy_directory.edit', compact('item'))
+				->with('plurial_name', $this->plurial_name)
+				->with('name', $this->name)
+				->with('gender_male', $this->gender_male);
+    }
+
+    public function update(DummyClassRequest $request, DummyClass $item)
+    {
+	    $item->update($request->all());
+	    $item->setMedia($request);
+	    session()->flash('notification', ['type' => 'success', 'text' => 'L\'élement a été mise à jour']);
+	    return redirect()->route('dummy_route.index');
+    }
+
+    public function destroy(DummyClass $item)
+    {
+	    $item->delete();
+	    session()->flash('notification', ['type' => 'success', 'text' => 'L\'élement a été supprimé']);
+	    return redirect()->route('dummy_route.index');
+    }
+}

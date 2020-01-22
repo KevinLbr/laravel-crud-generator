@@ -1,0 +1,92 @@
+@extends('admin.layouts.app')
+
+@section('title')
+    {{ $plurial_name }}
+@stop
+
+@section('content')
+    <!-- Blank Header -->
+    <div class="content-header">
+        <div class="header-section">
+            <h1>
+                <i class="fas fa-list"></i>{{ ucFirst($plurial_name) }}<br>
+                <small>Listing</small>
+            </h1>
+        </div>
+    </div>
+    <!-- END Blank Header -->
+    <ul class="breadcrumb breadcrumb-top">
+        <li><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
+        <li>{{ ucFirst($plurial_name) }}</li>
+    </ul>
+
+    @include('errors.list')
+    <p>
+        <a class="btn btn-primary" href="{{ route('dummy_route.create') }}"><i class="fa fa-plus"></i> Ajouter {{ $gender_male ? "un" : "une" }} {{ $name }}</a>
+    </p>
+    <div class="block full">
+		<div class="block-content-full">
+			<div class="table-responsive">
+				<table id="items" class="table table-vcenter table-striped table-bordered table-hover" width="100%">
+					<thead>
+					<tr>
+						<th class="text-center">ID</th>
+						@foreach($fillables->take(5) as $fillable)
+							<th>{{ ucfirst($fillable->getLabel()) }}</th>
+						@endforeach
+						<th class="text-right">Actions</th>
+					</tr>
+					</thead>
+					<tbody>
+					@foreach($items as $item)
+						<tr>
+							<td class="text-center">{{ $item->id }}</td>
+							@foreach($item->generateFields()->take(5) as $column)
+							    @include('vendor.crud-generator.columns.' . $column->getType(), ['column' => $column, 'entity' => $item])
+							@endforeach
+
+							<td class="text-right">
+								{{ Form::open(['method' => 'DELETE', 'route' => ['dummy_route.destroy', $item->id], 'id'=>'delete-'.$item->id]) }}
+								<div class="btn-group btn-group-sm">
+									<a href="{{ route('dummy_route.edit', $item->id) }}" data-toggle="tooltip" class="btn btn-default edit-admin" data-original-title="Détails"><i class="hi hi-search"></i></a>
+									<a type="submit" class="btn btn-danger delete" data-entry="{{ $item->id }}" data-toogle="tooltip" data-original-title="Supprimer"><i class="fas fa-times"></i></a>
+								</div>
+								{{ Form::close() }}
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+@stop
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        $('.delete').on('click', function(e){
+            e.preventDefault();
+            var $entry = $(this).data('entry');
+            bootbox.confirm({
+                message: "Êtes-vous sur de vouloir supprimer cet élement ?",
+                buttons: {
+                    confirm: {
+                        label: 'Confirmer',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'Annuler',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function(result) {
+                    if(result){
+                        $('#delete-'+$entry).submit();
+                    }
+                },
+            });
+        });
+
+    </script>
+@endpush
