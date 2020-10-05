@@ -1,18 +1,18 @@
 {
-    "name": "ckcnet/crud-generator",
+    "name": "kevinlbr/crud-generator",
     "description": "Generate crud",
     "type": "library",
     "authors": [
         {
             "name": "Kevin Labre",
-            "email": "kevin@ckc-net.com"
+            "email": "kevinlabre@gmail.com"
         }
     ],
     "require": {},
     "extra": {
         "laravel": {
             "providers": [
-                "ckcnet\\crud-generator\\CrudGeneratorServiceProvider"
+                "kevinlbr\\crud-generator\\CrudGeneratorServiceProvider"
             ]
         }
     },

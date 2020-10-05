@@ -1,13 +1,13 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
 
 /**
  * Class CrudViewsCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudViewsCommand extends Command
 {
@@ -16,7 +16,7 @@ class CrudViewsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ckc:crud-views {name}';
+    protected $signature = 'kevinlbr:crud-views {name}';
 
     /**
      * The console command description.
@@ -35,19 +35,19 @@ class CrudViewsCommand extends Command
         $name = ucfirst($this->argument('name'));
 
         // Create the CRUD View and show output
-        Artisan::call('ckc:crud-view-form', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-view-form', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD View and show output
-        Artisan::call('ckc:crud-view-create', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-view-create', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD View and show output
-        Artisan::call('ckc:crud-view-edit', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-view-edit', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD View and show output
-        Artisan::call('ckc:crud-view-index', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-view-index', ['name' => $name]);
         echo Artisan::output();
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
-use CkcNet\CrudGenerator\Traits\FillableCommande;
-use CkcNet\CrudGenerator\Traits\Util;
+use KevinLbr\CrudGenerator\Traits\FillableCommande;
+use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
 /**
  * Class CrudRequestCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudRequestCommand extends GeneratorCommand
 {
@@ -19,14 +19,14 @@ class CrudRequestCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'ckc:crud-request';
+    protected $name = 'kevinlbr:crud-request';
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'ckc:crud-request {name}';
+    protected $signature = 'kevinlbr:crud-request {name}';
 
     /**
      * The console command description.

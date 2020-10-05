@@ -7,12 +7,12 @@
 
 Dans le composer.json du projet 
 ```
-"CkcNet\\CrudGenerator\\": "packages/ckcnet/crud-generator/src/"
+"KevinLbr\\CrudGenerator\\": "packages/kevinlbr/crud-generator/src/"
 ```
 
 Dans config/app.php
 ```
-CkcNet\CrudGenerator\Crud`GeneratorServiceProvider::class,
+KevinLbr\CrudGenerator\Crud`GeneratorServiceProvider::class,
 ```
 
 et 

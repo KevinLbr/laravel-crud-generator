@@ -1,6 +1,6 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 /**
  * Class CrudCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudCommand extends Command
 {
@@ -17,7 +17,7 @@ class CrudCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ckc:crud {name}';
+    protected $signature = 'kevinlbr:crud {name}';
 
     /**
      * The console command description.
@@ -48,23 +48,23 @@ class CrudCommand extends Command
         }
 
         // Create the CRUD Controller and show output
-        Artisan::call('ckc:crud-controller', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-controller', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD Model and show output
-        Artisan::call('ckc:crud-model', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-model', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD Request and show output
-        Artisan::call('ckc:crud-request', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-request', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD View and show output
-        Artisan::call('ckc:crud-views', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-views', ['name' => $name]);
         echo Artisan::output();
 
         // Create the CRUD Lang and show output
-        Artisan::call('ckc:crud-lang', ['name' => $name]);
+        Artisan::call('kevinlbr:crud-lang', ['name' => $name]);
         echo Artisan::output();
     }
 }

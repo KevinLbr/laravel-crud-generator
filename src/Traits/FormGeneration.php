@@ -1,17 +1,17 @@
 <?php
 
 
-namespace CkcNet\CrudGenerator\Traits;
+namespace KevinLbr\CrudGenerator\Traits;
 
 
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldDateGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldFileGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldNumberGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldRadioGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldSelectGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldTextareaGenerator;
-use CkcNet\CrudGenerator\Util\FieldGenerator\FieldTextGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldDateGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldFileGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldNumberGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldRadioGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldSelectGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldTextareaGenerator;
+use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldTextGenerator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 

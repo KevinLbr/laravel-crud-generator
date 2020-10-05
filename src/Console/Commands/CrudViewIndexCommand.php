@@ -1,13 +1,13 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
-use CkcNet\CrudGenerator\Traits\Util;
+use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
 /**
  * Class CrudViewIndexCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudViewIndexCommand extends GeneratorCommand
 {
@@ -18,14 +18,14 @@ class CrudViewIndexCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'ckc:crud-view-index';
+    protected $name = 'kevinlbr:crud-view-index';
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'ckc:crud-view-index {name}';
+    protected $signature = 'kevinlbr:crud-view-index {name}';
 
     /**
      * The console command description.

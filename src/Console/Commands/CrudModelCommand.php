@@ -1,15 +1,15 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
-use CkcNet\CrudGenerator\Traits\FillableCommande;
-use CkcNet\CrudGenerator\Traits\Util;
+use KevinLbr\CrudGenerator\Traits\FillableCommande;
+use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 
 /**
  * Class CrudModelCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudModelCommand extends GeneratorCommand
 {
@@ -20,14 +20,14 @@ class CrudModelCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'ckc:crud-model';
+    protected $name = 'kevinlbr:crud-model';
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'ckc:crud-model {name}';
+    protected $signature = 'kevinlbr:crud-model {name}';
 
     /**
      * The console command description.

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace CkcNet\CrudGenerator\Util\FieldGenerator;
+namespace KevinLbr\CrudGenerator\Util\FieldGenerator;
 
 /**
  * Class FieldFileGenerator
- * @package CkcNet\CrudGenerator\Util\FieldGenerator
+ * @package KevinLbr\CrudGenerator\Util\FieldGenerator
  */
 class FieldFileGenerator extends FieldGenerator
 {

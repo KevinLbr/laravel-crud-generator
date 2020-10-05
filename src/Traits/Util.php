@@ -1,11 +1,11 @@
 <?php
 
 
-namespace CkcNet\CrudGenerator\Traits;
+namespace KevinLbr\CrudGenerator\Traits;
 
 /**
  * Trait Util
- * @package CkcNet\CrudGenerator\Traits
+ * @package KevinLbr\CrudGenerator\Traits
  */
 trait Util
 {

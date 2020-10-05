@@ -1,22 +1,22 @@
 <?php
 
-namespace CkcNet\CrudGenerator;
+namespace KevinLbr\CrudGenerator;
 
-use CkcNet\CrudGenerator\Console\Commands\CrudCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudControllerCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudLangCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudModelCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudRequestCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudViewCreateCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudViewEditCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudViewFormCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudViewIndexCommand;
-use CkcNet\CrudGenerator\Console\Commands\CrudViewsCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudControllerCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudLangCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudModelCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudRequestCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudViewCreateCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudViewEditCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudViewFormCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudViewIndexCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudViewsCommand;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class CrudGeneratorServiceProvider
- * @package CkcNet\CrudGenerator
+ * @package KevinLbr\CrudGenerator
  */
 class CrudGeneratorServiceProvider extends ServiceProvider
 {

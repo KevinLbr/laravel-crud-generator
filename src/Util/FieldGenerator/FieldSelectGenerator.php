@@ -1,14 +1,14 @@
 <?php
 
 
-namespace CkcNet\CrudGenerator\Util\FieldGenerator;
+namespace KevinLbr\CrudGenerator\Util\FieldGenerator;
 
 
 use Illuminate\Support\Str;
 
 /**
  * Class FieldSelectGenerator
- * @package CkcNet\CrudGenerator\Util\FieldGenerator
+ * @package KevinLbr\CrudGenerator\Util\FieldGenerator
  */
 class FieldSelectGenerator extends FieldGenerator
 {

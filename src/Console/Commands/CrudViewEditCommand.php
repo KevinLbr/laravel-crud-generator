@@ -1,13 +1,13 @@
 <?php
 
-namespace CkcNet\CrudGenerator\Console\Commands;
+namespace KevinLbr\CrudGenerator\Console\Commands;
 
-use CkcNet\CrudGenerator\Traits\Util;
+use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
 /**
  * Class CrudViewEditCommand
- * @package CkcNet\CrudGenerator\Console\Commands
+ * @package KevinLbr\CrudGenerator\Console\Commands
  */
 class CrudViewEditCommand extends GeneratorCommand
 {
@@ -18,14 +18,14 @@ class CrudViewEditCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'ckc:crud-view-edit';
+    protected $name = 'kevinlbr:crud-view-edit';
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'ckc:crud-view-edit {name}';
+    protected $signature = 'kevinlbr:crud-view-edit {name}';
 
     /**
      * The console command description.
