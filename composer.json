@@ -23,6 +23,5 @@
         "psr-4": {
             "KevinLbr\\CrudGenerator\\": "src/"
         }
-    },
-    "prefer-stable": true
+    }
 }
