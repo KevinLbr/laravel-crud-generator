@@ -5,6 +5,10 @@ namespace CkcNet\CrudGenerator\Console\Commands;
 use CkcNet\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * Class CrudViewEditCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudViewEditCommand extends GeneratorCommand
 {
     use Util;

@@ -6,12 +6,31 @@ namespace CkcNet\CrudGenerator\Util\FieldGenerator;
 
 use Illuminate\Support\Str;
 
+/**
+ * Class FieldSelectGenerator
+ * @package CkcNet\CrudGenerator\Util\FieldGenerator
+ */
 class FieldSelectGenerator extends FieldGenerator
 {
     const TYPE = "select";
+
+    /**
+     * @var boolean $is_foreign_key
+     */
     protected $is_foreign_key;
+
+    /**
+     * @var array $items
+     */
     protected $items;
 
+    /**
+     * FieldSelectGenerator constructor.
+     * @param $column
+     * @param $entity
+     * @param bool $isForiegn
+     * @throws \Exception
+     */
     public function __construct($column, $entity, bool $isForiegn)
     {
         parent::__construct($column, $entity);
@@ -78,7 +97,8 @@ class FieldSelectGenerator extends FieldGenerator
     public function getRelationFunction(): string
     {
         if(!$this->isForeignKey()){
-            throw new \Exception('Column is not foreign key');
+            $value = $this->isForeignKey() == true ? 'true' : 'false';
+            throw new \Exception("Column is not foreign key ({$this->getName()}, {$value})");
         }
 
         return explode('_id', $this->getName())[0];
@@ -93,12 +113,17 @@ class FieldSelectGenerator extends FieldGenerator
     public function getRelationClass(): string
     {
         if(!$this->isForeignKey()){
-            throw new \Exception('Column is not foreign key');
+            $value = $this->isForeignKey() == true ? 'true' : 'false';
+            throw new \Exception("Column is not foreign key ({$this->getName()}, {$value})");
         }
 
         return ucFirst(explode('_id', $this->getName())[0]);
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     public function getOptions()
     {
         $methodsOptions = "getOptions" . ucFirst(Str::camel($this->getName())) . "s";
@@ -112,6 +137,7 @@ class FieldSelectGenerator extends FieldGenerator
         if(!$this->getNotNull()){
             $data[null] = 'Aucun élement selectionné';
         }
+
         foreach($items as $key => $item){
             $data[$key] = $item;
         }
@@ -134,8 +160,8 @@ class FieldSelectGenerator extends FieldGenerator
             $items = $this->entity->$methodsList();
         } elseif(class_exists($class)){
             $items = $class::all();
-        }else {
-            throw new \Exception("Le nom de la relation n'est pas identique au nom de la classe qu'elle renvoi, 
+        } else {
+            throw new \Exception("Le nom de la relation n'est pas identique au nom de la classe qu'elle renvoi,
             et aucune fonction {$methodsList}() existe, donc Crud Generator ne peut pas generer de liste");
         }
 
@@ -143,6 +169,7 @@ class FieldSelectGenerator extends FieldGenerator
         if(!$this->getNotNull()){
             $data[null] = 'Aucun élement selectionné';
         }
+
         foreach($items as $item){
             $data[$item->id] = $item->name != null ? $item->name : $item->id;
         }
@@ -150,6 +177,10 @@ class FieldSelectGenerator extends FieldGenerator
         return $data;
     }
 
+    /**
+     * @return object
+     * @throws \Exception
+     */
     public function getItemSelect()
     {
         if($this->isForeignKey()){
@@ -167,6 +198,21 @@ class FieldSelectGenerator extends FieldGenerator
 
             // TODO throw
             return (object)['name' => '--'];
+        }
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getValue()
+    {
+        $options = $this->getItems();
+
+        foreach($options as $key => $option){
+            if($key == $this->value){
+                return $option;
+            }
         }
     }
 }

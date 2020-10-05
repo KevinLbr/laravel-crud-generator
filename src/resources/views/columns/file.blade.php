@@ -1,5 +1,8 @@
 <td>
-@if ($entity->media)
-    <img style="width: 50px" src="{{ $entity->media->route() }}">
-@endif
+{{--    TODO remove media ?--}}
+    @if ($entity->media)
+        <img style="width: 50px" src="{{ $entity->media->route() }}">
+    @else
+{{--        TODO --}}
+    @endif
 </td>

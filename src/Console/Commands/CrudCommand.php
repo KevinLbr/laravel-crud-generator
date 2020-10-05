@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CrudCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudCommand extends Command
 {
     /**
@@ -31,6 +35,7 @@ class CrudCommand extends Command
     {
         $name = ucfirst($this->argument('name'));
 
+        // test if name parameter is correct to generate
         $generate = 'Yes';
         if(!Schema::hasTable($name . 's')){
             $this->info($name . 's table not found ! We can\'t generate fillable, and add media function if need it');

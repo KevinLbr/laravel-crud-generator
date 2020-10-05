@@ -6,6 +6,10 @@ use CkcNet\CrudGenerator\Traits\FillableCommande;
 use CkcNet\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * Class CrudControllerCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudControllerCommand extends GeneratorCommand
 {
     use Util;
@@ -56,11 +60,17 @@ class CrudControllerCommand extends GeneratorCommand
      * Get the stub file for the generator.
      *
      * @return string
+     * @throws \Exception
      */
     protected function getStub()
     {
-        $media = FillableCommande::haveMediaColumn($this->getNameInput()) ? 'media' : '';
-        $position = FillableCommande::havePositionColumn($this->getNameInput()) ? 'position' : '';
+        $media = FillableCommande::haveMediaColumn($this->getNameInput())
+            ? 'media'
+            : '';
+
+        $position = FillableCommande::havePositionColumn($this->getNameInput())
+            ? 'position'
+            : '';
 
         return __DIR__."/../../stubs/controllers/crud-{$media}{$position}controller.stub";
     }

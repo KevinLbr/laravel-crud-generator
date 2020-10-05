@@ -5,6 +5,10 @@ namespace CkcNet\CrudGenerator\Console\Commands;
 use CkcNet\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * Class CrudViewFormCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudViewFormCommand extends GeneratorCommand
 {
     use Util;
@@ -62,6 +66,7 @@ class CrudViewFormCommand extends GeneratorCommand
      * Execute the console command.
      *
      * @return bool|null
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function fire()
     {

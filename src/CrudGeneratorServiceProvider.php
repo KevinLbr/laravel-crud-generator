@@ -14,8 +14,15 @@ use CkcNet\CrudGenerator\Console\Commands\CrudViewIndexCommand;
 use CkcNet\CrudGenerator\Console\Commands\CrudViewsCommand;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class CrudGeneratorServiceProvider
+ * @package CkcNet\CrudGenerator
+ */
 class CrudGeneratorServiceProvider extends ServiceProvider
 {
+    /**
+     * @var array $commands
+     */
     protected $commands = [
         CrudCommand::class,
         CrudControllerCommand::class,
@@ -28,6 +35,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
         CrudViewIndexCommand::class,
         CrudLangCommand::class,
     ];
+
     /**
      * Register services.
      *

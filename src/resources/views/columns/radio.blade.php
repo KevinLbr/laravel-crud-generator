@@ -1,3 +1,6 @@
 <td>
-    {{ $column->getValue() ? 'Oui' : 'Non' }}
+    {{ $column->getValue()
+        ? 'Oui'
+        : 'Non'
+    }}
 </td>

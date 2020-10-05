@@ -23,6 +23,10 @@ use Illuminate\Support\Str;
  */
 trait FormGeneration
 {
+    /**
+     * @param array $fillables
+     * @return mixed
+     */
     static function getFillablesModel(array $fillables = [])
     {
         $class = __CLASS__;
@@ -46,6 +50,9 @@ trait FormGeneration
 
         $data = [];
         foreach ($fillables as $fillable) {
+            // fix enum type error
+            DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+
             $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
             $data[] = $this->getFieldGeneratorType($column, $this);
         }
@@ -62,6 +69,9 @@ trait FormGeneration
      */
     public function generateField(string $fillable)
     {
+        // fix enum type error
+        DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+
         $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
         return $this->getFieldGeneratorType($column, $this);
     }
@@ -89,13 +99,9 @@ trait FormGeneration
         }
 
         switch ($column->getType()->getName()) {
-            case 'integer':
-                return new FieldNumberGenerator($column, $entity);
-                break;
             case 'float':
-                return new FieldNumberGenerator($column, $entity);
-                break;
             case 'decimal':
+            case 'integer':
                 return new FieldNumberGenerator($column, $entity);
                 break;
             case 'string':
@@ -115,9 +121,15 @@ trait FormGeneration
         }
     }
 
+    /**
+     * @param $fillable
+     * @return FieldGenerator
+     * @throws \Exception
+     */
     public function getField($fillable)
     {
         $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
+
         return $this->getFieldGeneratorType($column, $this);
     }
 

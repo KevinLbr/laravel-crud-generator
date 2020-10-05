@@ -3,7 +3,10 @@
 
 namespace CkcNet\CrudGenerator\Traits;
 
-
+/**
+ * Trait Util
+ * @package CkcNet\CrudGenerator\Traits
+ */
 trait Util
 {
     /**

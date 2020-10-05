@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\DB;
  */
 trait FillableCommande
 {
-
     /**
      * @param $nameCrud
      * @return array

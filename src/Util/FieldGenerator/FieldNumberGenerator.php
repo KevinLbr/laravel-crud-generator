@@ -6,11 +6,22 @@ namespace CkcNet\CrudGenerator\Util\FieldGenerator;
 
 use Illuminate\Support\Str;
 
+/**
+ * Class FieldNumberGenerator
+ * @package CkcNet\CrudGenerator\Util\FieldGenerator
+ */
 class FieldNumberGenerator extends FieldGenerator
 {
     const TYPE = "number";
 
+    /**
+     * @var boolean $hasOptions
+     */
     protected $hasOptions;
+
+    /**
+     * @var array $options
+     */
     protected $options;
 
     /**

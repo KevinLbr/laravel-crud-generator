@@ -20,6 +20,7 @@
             'class' => $class_input,
             'required' => $field->getNotNull()
         ]) !!}
+
         {!! $errors->first($field->getName(), '<span class="help-block">:message</span>') !!}
     </div>
 </div>

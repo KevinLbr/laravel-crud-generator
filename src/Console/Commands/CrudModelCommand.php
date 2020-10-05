@@ -7,6 +7,10 @@ use CkcNet\CrudGenerator\Traits\Util;
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * Class CrudModelCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudModelCommand extends GeneratorCommand
 {
     use Util;
@@ -43,10 +47,13 @@ class CrudModelCommand extends GeneratorCommand
      * Get the stub file for the generator.
      *
      * @return string
+     * @throws \Exception
      */
     protected function getStub()
     {
-        $media = FillableCommande::haveMediaColumn($this->getNameInput()) ? 'media' : '';
+        $media = FillableCommande::haveMediaColumn($this->getNameInput())
+            ? 'media'
+            : '';
 
         return __DIR__."/../../stubs/models/crud-{$media}model.stub";
     }
@@ -88,6 +95,7 @@ class CrudModelCommand extends GeneratorCommand
      * @param string $name
      *
      * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function buildClass($name)
     {
@@ -99,6 +107,9 @@ class CrudModelCommand extends GeneratorCommand
             ->replaceClass($stub, $name);
     }
 
+    /**
+     * @return string
+     */
     public function getFillables()
     {
         $fillables = FillableCommande::getFillable($this->getNameInput());

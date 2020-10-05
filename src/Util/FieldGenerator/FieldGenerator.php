@@ -3,15 +3,45 @@
 
 namespace CkcNet\CrudGenerator\Util\FieldGenerator;
 
-
+/**
+ * Class FieldGenerator
+ * @package CkcNet\CrudGenerator\Util\FieldGenerator
+ */
 class FieldGenerator
 {
+    /**
+     * @var $column
+     */
     protected $column;
+
+    /**
+     * @var string $name
+     */
     protected $name;
+
+    /**
+     * @var $type
+     */
     protected $type;
+
+    /**
+     * @var string$label
+     */
     protected $label;
+
+    /**
+     * @var $entity
+     */
     protected $entity;
+
+    /**
+     * @var $value
+     */
     protected $value;
+
+    /**
+     * @var boolean $notNull
+     */
     protected $notNull;
 
     const DEFAULT_TYPE = 'text';
@@ -160,7 +190,9 @@ class FieldGenerator
      */
     public function getLabelWithRequired(): string
     {
-        return $this->getNotNull() == true ? $this->label . ' *' : $this->label;
+        return $this->getNotNull() == true
+            ? $this->label . ' *'
+            : $this->label;
     }
 
     /**

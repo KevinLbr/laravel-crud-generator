@@ -1,0 +1,3 @@
+<td>
+    {{ $column->getValue() }}
+</td>

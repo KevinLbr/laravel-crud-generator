@@ -6,6 +6,10 @@ use CkcNet\CrudGenerator\Traits\FillableCommande;
 use CkcNet\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * Class CrudLangCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudLangCommand extends GeneratorCommand
 {
     use Util;
@@ -125,6 +129,9 @@ class CrudLangCommand extends GeneratorCommand
         return $stub;
     }
 
+    /**
+     * @return string
+     */
     public function getFillables()
     {
         $fillables = FillableCommande::getFillable($this->getNameInput());

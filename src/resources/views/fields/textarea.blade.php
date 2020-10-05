@@ -22,10 +22,11 @@
             'required' => $field->getNotNull(),
             'rows' => 5,
         ]) !!}
+
         {!! $errors->first($field->getName(), '<span class="help-block">:message</span>') !!}
     </div>
 </div>
 
 @push('scripts')
-    <script src="{{ asset('admin/js/helpers/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admin_asset/js/helpers/ckeditor/ckeditor.js') }}"></script>
 @endpush

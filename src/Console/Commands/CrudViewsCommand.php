@@ -5,6 +5,10 @@ namespace CkcNet\CrudGenerator\Console\Commands;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
 
+/**
+ * Class CrudViewsCommand
+ * @package CkcNet\CrudGenerator\Console\Commands
+ */
 class CrudViewsCommand extends Command
 {
     /**
