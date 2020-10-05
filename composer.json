@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": "^7.0",
         "laravel/laravel": "5.8.*"
     },
     "extra": {
@@ -20,7 +21,9 @@
     },
     "autoload": {
         "psr-4": {
-            "KevinLbr\\CrudGenerator\\": "src"
+            "KevinLbr\\CrudGenerator\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev-master",
+    "prefer-stable": true
 }
