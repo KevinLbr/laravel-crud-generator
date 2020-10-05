@@ -12,13 +12,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "kevinlbr\\crud-generator\\CrudGeneratorServiceProvider"
+                "KevinLbr\\crud-generator\\CrudGeneratorServiceProvider"
             ]
         }
     },
     "autoload": {
         "psr-4": {
-            "CkcNet\\CrudGenerator\\": "src"
+            "KevinLbr\\CrudGenerator\\": "src"
         }
     }
 }
