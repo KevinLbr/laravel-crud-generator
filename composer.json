@@ -24,6 +24,5 @@
             "KevinLbr\\CrudGenerator\\": "src/"
         }
     },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
