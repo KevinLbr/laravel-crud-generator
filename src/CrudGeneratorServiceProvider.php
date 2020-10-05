@@ -14,7 +14,6 @@ use KevinLbr\CrudGenerator\Console\Commands\CrudViewIndexCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudViewsCommand;
 use Illuminate\Support\ServiceProvider;
 
-
 /**
  * Class CrudGeneratorServiceProvider
  * @package KevinLbr\CrudGenerator
