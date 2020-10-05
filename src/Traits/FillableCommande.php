@@ -3,15 +3,6 @@
 
 namespace KevinLbr\CrudGenerator\Traits;
 
-
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldDateGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldFileGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldNumberGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldRadioGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldSelectGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldTextareaGenerator;
-use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldTextGenerator;
 use Illuminate\Support\Facades\DB;
 
 /**

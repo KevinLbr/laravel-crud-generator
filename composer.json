@@ -8,11 +8,13 @@
             "email": "kevinlabre@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "laravel/laravel": "5.8.*"
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "KevinLbr\\crud-generator\\CrudGeneratorServiceProvider"
+                "KevinLbr\\CrudGenerator\\CrudGeneratorServiceProvider"
             ]
         }
     },
