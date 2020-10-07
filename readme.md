@@ -25,7 +25,7 @@ php artisan vendor:publish --tag=crud-generator
 ```
 php artisan make:migration create_[nameS]_table
 php artisan migrate
-php artisan ckc:crud [name]
+php artisan kevinlbr:crud [name]
 ```
 
 /routes/web.php

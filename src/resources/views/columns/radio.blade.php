@@ -1,5 +1,5 @@
 <td>
-    {{ $column->getValue()
+    {{ $column->getValue() == 1
         ? 'Oui'
         : 'Non'
     }}

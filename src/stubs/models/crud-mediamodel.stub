@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\BelongsToMedia;
-use CkcNet\CrudGenerator\Traits\FormGeneration;
+use KevinLbr\CrudGenerator\Traits\FormGeneration;
 use Illuminate\Database\Eloquent\Model;
 
 class DummyClass extends Model
