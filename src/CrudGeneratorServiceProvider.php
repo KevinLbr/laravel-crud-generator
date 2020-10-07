@@ -59,6 +59,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/resources/views' => resource_path('views/vendor/crud-generator'),
+            __DIR__.'/config/laravel-crud-generator.php' => config_path('laravel-crud-generator.php'),
         ], 'crud-generator');
     }
 }
