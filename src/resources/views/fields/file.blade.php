@@ -12,15 +12,7 @@
 @endif
 
 <div class="form-group">
-    <tooltip-component
-        :label="{{ json_encode($field->getLabelWithRequired()) }}"
-        :label-name="{{ json_encode($field->getName()) }}"
-        :label-class="{{ json_encode($class_label) }}"
-        :name="{{ json_encode($field->getName()) }}"
-        :model="{{ json_encode(($field->getEntity()->getTable())) }}"
-        :api_token="{{ json_encode(auth('admin')->user()->api_token) }}"
-    >
-    </tooltip-component>
+    <label class="col-md-4 control-label">{{ $field->getLabelWithRequired() }}</label>
 
     <div class="col-md-6">
         {!! Form::file($field->getName()) !!}

@@ -5,15 +5,7 @@
 @endphp
 
 <div class="form-group {{ $errors->has($field->getName()) ? 'has-error' : '' }}" id="form_group_{{ $field->getName() }}">
-    <tooltip-component
-        :label="{{ json_encode($field->getLabelWithRequired()) }}"
-        :label-name="{{ json_encode($field->getName()) }}"
-        :label-class="{{ json_encode($class_label) }}"
-        :name="{{ json_encode($field->getName()) }}"
-        :model="{{ json_encode(($field->getEntity()->getTable())) }}"
-        :api_token="{{ json_encode(auth('admin')->user()->api_token) }}"
-    >
-    </tooltip-component>
+    <label class="col-md-4 control-label">{{ $field->getLabelWithRequired() }}</label>
 
     <div class="{{ $class_col_input }}">
         {!! Form::textarea($field->getName(), null, [
