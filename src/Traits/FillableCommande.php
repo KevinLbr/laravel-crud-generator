@@ -14,17 +14,26 @@ use Illuminate\Support\Facades\DB;
 trait FillableCommande
 {
     /**
+     * @param string $nameCrud
+     * @return string
+     */
+    private static function getTableFromName(string $nameCrud)
+    {
+        return strtolower($nameCrud . 's');
+    }
+
+    /**
      * @param $nameCrud
      * @return array
      */
     static function getFillable(string $nameCrud): array
     {
-        $table = strtolower($nameCrud . 's');
+        $table = self::getTableFromName($nameCrud);
 
         $columns = DB::connection()->getSchemaBuilder()->getColumnListing($table);
 
         foreach($columns as $key => $column){
-            if($column == 'id' || $column == 'updated_at' || $column == 'created_at'){
+            if(in_array($column, ['id', 'updated_at', 'created_at'])){
                 unset($columns[$key]);
             }
         }
@@ -59,14 +68,6 @@ trait FillableCommande
      */
     static function haveColumn(string $nameCrud, string $nameColumn): bool
     {
-        $columns = self::getFillable($nameCrud);
-
-        foreach($columns as $column){
-            if($column == $nameColumn){
-                return true;
-            }
-        }
-
-        return false;
+        return in_array($nameColumn, self::getFillable($nameCrud));
     }
 }

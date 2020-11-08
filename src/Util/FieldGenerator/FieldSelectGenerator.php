@@ -1,8 +1,6 @@
 <?php
 
-
 namespace KevinLbr\CrudGenerator\Util\FieldGenerator;
-
 
 use Illuminate\Support\Str;
 

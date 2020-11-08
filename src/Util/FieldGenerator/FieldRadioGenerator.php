@@ -1,6 +1,5 @@
 <?php
 
-
 namespace KevinLbr\CrudGenerator\Util\FieldGenerator;
 
 /**
