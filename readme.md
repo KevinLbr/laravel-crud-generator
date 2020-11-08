@@ -40,9 +40,10 @@ Crud is created
 TODO
 - ajouter dans la sidebar le li
 - ajouter les routes auto
-- fichier de config pour savoir quel nom de colonne correspond a un type file, etc
+- Interface pour recup arra, recupe chaque colonne, ect
 - les infos gender, name, plurial etc sont pas forcement bien placé dans le controler, peut etre les mettre dans un fichier de conf ou de translation ?
 - pour plus de flexibilité, gerer les vues des stubs autrement, c'est a dire, faire seulement les form, pour le reste (edit, create, index) ça depend de l'administration, donc faire que les _form, et un table pour le listing, qui devront etre include dans les vues en question
 - améliorer les rules ?
 - faire la doc 
+- les trad (gender_name, ..) doivent etre dans lang
  
