@@ -7,6 +7,7 @@ use KevinLbr\CrudGenerator\Console\Commands\CrudControllerCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudLangCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudModelCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudRequestCommand;
+use KevinLbr\CrudGenerator\Console\Commands\CrudRoutesCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudViewCreateCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudViewEditCommand;
 use KevinLbr\CrudGenerator\Console\Commands\CrudViewFormCommand;
@@ -25,6 +26,7 @@ class CrudGeneratorServiceProvider extends ServiceProvider
      */
     protected $commands = [
         CrudCommand::class,
+        CrudRoutesCommand::class,
         CrudControllerCommand::class,
         CrudModelCommand::class,
         CrudRequestCommand::class,
@@ -53,8 +55,6 @@ class CrudGeneratorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $this->loadRoutesFrom(__DIR__.'/routes.php');
-//        $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'crud-generator');
 
         $this->publishes([

@@ -1,0 +1,3 @@
+<?php
+
+	Route::resources('dummy_name', 'dummy_controller');

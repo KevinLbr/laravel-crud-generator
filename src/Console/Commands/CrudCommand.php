@@ -66,5 +66,9 @@ class CrudCommand extends Command
         // Create the CRUD Lang and show output
         Artisan::call('kevinlbr:crud-lang', ['name' => $name]);
         echo Artisan::output();
+
+        // Create the CRUD Routes and show output
+        Artisan::call('kevinlbr:crud-routes', ['name' => $name]);
+        echo Artisan::output();
     }
 }
