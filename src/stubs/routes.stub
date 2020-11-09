@@ -1,3 +1,3 @@
 <?php
 
-	Route::resources('dummy_name', 'dummy_controller');
+Route::resource('dummy_name', 'Admin\dummy_controller');

@@ -32,7 +32,7 @@ class CrudRoutesCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $type = 'Route edit';
+    protected $type = 'Routes create';
 
     /**
      * Execute the console command.
@@ -80,7 +80,7 @@ class CrudRoutesCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return $this->laravel['path'].'/../routes/admin/'. $name . '.php';
+        return $this->laravel['path'].'/../routes/admin/'. strtolower($name) . '.php';
     }
 
     /**
@@ -96,7 +96,8 @@ class CrudRoutesCommand extends GeneratorCommand
         $stub = $this->files->get($this->getStub());
 
         $this->replaceWord($stub, $this->getPlurialName($name), "dummy_name");
-        $this->replaceWord($stub, 'Admin\\' . ucFirst(strtolower($name)) . 'sController', "dummy_controller");
+        $name_controller = ucFirst(strtolower($name)) . 'Controller';
+        $this->replaceWord($stub, $name_controller, "dummy_controller");
 
         return $stub;
     }
