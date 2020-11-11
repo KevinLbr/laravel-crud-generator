@@ -124,7 +124,7 @@ class CrudLangCommand extends GeneratorCommand
     {
         $stub = $this->files->get($this->getStub());
 
-        $this->replaceWord($stub, $this->getFillables(), 'fillables');
+        $this->replaceWord($stub, $this->getFillables($name), 'fillables');
 
         return $stub;
     }
@@ -132,16 +132,28 @@ class CrudLangCommand extends GeneratorCommand
     /**
      * @return string
      */
-    public function getFillables()
+    public function getFillables($name)
     {
         $fillables = FillableCommande::getFillable($this->getNameInput());
 
         $content = '';
         foreach($fillables as $fillable){
             $content .= "'{$fillable}' => '{$fillable}',";
-            $content .=  PHP_EOL;
-            $content .=  "\t" . "\t";
+            $content .= PHP_EOL;
+            $content .= "\t" . "\t";
         }
+
+        $content .= "'gender' => 'un',";
+        $content .= PHP_EOL;
+        $content .= "\t" . "\t";
+
+        $content .= "'name' => '" . strtolower($name) . "',";
+        $content .= PHP_EOL;
+        $content .= "\t" . "\t";
+
+        $content .= "'plurial_name' => '" . strtolower($name) . "s',";
+        $content .= PHP_EOL;
+        $content .= "\t" . "\t";
 
         return $content;
     }

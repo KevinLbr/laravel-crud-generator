@@ -1,29 +1,29 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Ajouter {{ $gender_male ? 'un' : 'une' }} {{ $name }}
+    Ajouter {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}
 @stop
 
 @section('content')
     <div class="content-header">
         <div class="header-section">
             <h1>
-                <i class="fa fa-list"></i>{{ ucFirst($plurial_name) }}<br>
-                <small>Ajouter {{ $gender_male ? 'un' : 'une' }} {{ $name }}</small>
+                <i class="fa fa-list"></i>{{ ucFirst(trans('trans_path_plurial')) }}<br>
+                <small>Ajouter {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}</small>
             </h1>
         </div>
     </div>
     <ul class="breadcrumb breadcrumb-top">
         <li><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-        <li><a href="{{ route('dummy_route.index') }}">{{ ucFirst($plurial_name) }}</a></li>
-        <li>Ajouter {{ $gender_male ? 'un' : 'une' }} {{ $name }}</li>
+        <li><a href="{{ route('dummy_route.index') }}">{{ ucFirst(trans('trans_path_plurial')) }}</a></li>
+        <li>Ajouter {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}</li>
     </ul>
 
     @include('errors.list')
 
     <div class="block">
         <div class="block-title">
-            <h2>Ajouter {{ $gender_male ? 'un' : 'une' }} {{ $name }}</h2>
+            <h2>Ajouter {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}</h2>
         </div>
 
         {!! Form::open(['route' => ['dummy_route.store'], 'files' => true, 'method' => 'POST', 'class' => 'form-horizontal form-bordered']) !!}

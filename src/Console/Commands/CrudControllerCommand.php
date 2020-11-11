@@ -64,15 +64,7 @@ class CrudControllerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        $media = FillableCommande::haveMediaColumn($this->getNameInput())
-            ? 'media'
-            : '';
-
-        $position = FillableCommande::havePositionColumn($this->getNameInput())
-            ? 'position'
-            : '';
-
-        return __DIR__."/../../stubs/controllers/crud-{$media}{$position}controller.stub";
+        return __DIR__."/../../stubs/controllers/crud-controller.stub";
     }
 
     /**

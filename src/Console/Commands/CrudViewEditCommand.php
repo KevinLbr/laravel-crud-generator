@@ -128,6 +128,12 @@ class CrudViewEditCommand extends GeneratorCommand
         $this->replaceWord($stub, strtolower($name), 'item');
         $this->replaceWord($stub, $this->getPlurialName($name) , 'items');
 
+        //        TODO check
+        $path_trans = strtolower(str_replace('\\', '/', $name)).'s';
+        $this->replaceWord($stub, $path_trans . '.plurial_name', 'trans_path_plurial');
+        $this->replaceWord($stub, $path_trans . '.gender', 'trans_path_gender');
+        $this->replaceWord($stub, $path_trans . '.name', 'trans_path_name');
+
         return $stub;
     }
 

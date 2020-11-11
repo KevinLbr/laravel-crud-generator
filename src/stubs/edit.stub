@@ -1,22 +1,22 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Éditer {{ $gender_male ? 'un' : 'une' }} {{ $name }}
+    Éditer {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}
 @stop
 
 @section('content')
     <div class="content-header">
         <div class="header-section">
             <h1>
-                <i class="fa fa-list"></i>{{ ucFirst($plurial_name) }}<br>
-                <small>Éditer {{ $gender_male ? 'un' : 'une' }} {{ $name }}</small>
+                <i class="fa fa-list"></i>{{ ucFirst(trans('trans_path_plurial'))}}<br>
+                <small>Éditer {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}</small>
             </h1>
         </div>
     </div>
     <ul class="breadcrumb breadcrumb-top">
         <li><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-        <li><a href="{{ route('dummy_route.index') }}">{{ ucFirst($plurial_name) }} </a></li>
-        <li>Éditer {{ $gender_male ? 'un' : 'une' }} {{ $name }}</li>
+        <li><a href="{{ route('dummy_route.index') }}">{{ ucFirst(trans('trans_path_plurial'))}} </a></li>
+        <li>Éditer {{ trans('trans_path_gender') }} {{ trans('trans_path_name') }}</li>
     </ul>
 
     @include('errors.list')

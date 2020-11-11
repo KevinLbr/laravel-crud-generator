@@ -51,11 +51,7 @@ class CrudModelCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        $media = FillableCommande::haveMediaColumn($this->getNameInput())
-            ? 'media'
-            : '';
-
-        return __DIR__."/../../stubs/models/crud-{$media}model.stub";
+        return __DIR__."/../../stubs/models/crud-model.stub";
     }
 
     /**

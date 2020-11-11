@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    {{ $plurial_name }}
+    {{ ucFirst(trans('trans_path_plurial')) }}
 @stop
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="content-header">
         <div class="header-section">
             <h1>
-                <i class="fas fa-list"></i>{{ ucFirst($plurial_name) }}<br>
+                <i class="fas fa-list"></i>{{ ucFirst(trans('trans_path_plurial'))}}<br>
                 <small>Listing</small>
             </h1>
         </div>
@@ -17,12 +17,15 @@
     <!-- END Blank Header -->
     <ul class="breadcrumb breadcrumb-top">
         <li><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-        <li>{{ ucFirst($plurial_name) }}</li>
+        <li>{{ ucFirst(trans('trans_path_plurial'))}}</li>
     </ul>
 
     @include('errors.list')
     <p>
-        <a class="btn btn-primary" href="{{ route('dummy_route.create') }}"><i class="fa fa-plus"></i> Ajouter {{ $gender_male ? "un" : "une" }} {{ $name }}</a>
+        <a class="btn btn-primary" href="{{ route('dummy_route.create') }}">
+            <i class="fa fa-plus"></i>
+            Ajouter {{ trans('trans_path_gender')}} {{ ucFirst(trans('trans_path_name'))}}
+        </a>
     </p>
     <div class="block full">
 		<div class="block-content-full">

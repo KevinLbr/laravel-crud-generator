@@ -12,14 +12,14 @@ trait Util
     /**
      * Replace word for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
-     * @param  string  $search
+     * @param string $stub
+     * @param string $name
+     * @param string $search
      * @return string
      */
     protected function replaceWord(&$stub, $name, $search)
     {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
+        $class = str_replace($this->getNamespace($name) . '\\', '', $name);
 
         $stub = str_replace($search, $class, $stub);
 
