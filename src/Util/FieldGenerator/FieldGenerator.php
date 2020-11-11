@@ -165,7 +165,7 @@ class FieldGenerator
      */
     public function setLabel(string $label): string
     {
-        $this->label = trans($this->entity->getTable() . '.' .strtolower($label));
+        $this->label = trans(config('crud-generator.paths.lang'). '/' . $this->entity->getTable() . '.' . strtolower($label));
 
         return $this->label;
     }
@@ -178,7 +178,7 @@ class FieldGenerator
      */
     public function getLabel(): string
     {
-        return $this->label;
+        return ucFirst($this->label);
     }
 
     /**
@@ -190,8 +190,8 @@ class FieldGenerator
     public function getLabelWithRequired(): string
     {
         return $this->getNotNull() == true
-            ? $this->label . ' *'
-            : $this->label;
+            ? $this->getLabel() . ' *'
+            : $this->getLabel();
     }
 
     /**

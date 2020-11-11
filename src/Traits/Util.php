@@ -3,6 +3,8 @@
 
 namespace KevinLbr\CrudGenerator\Traits;
 
+use Illuminate\Support\Str;
+
 /**
  * Trait Util
  * @package KevinLbr\CrudGenerator\Traits
@@ -27,14 +29,23 @@ trait Util
     }
 
     /**
-     * Get the default directory view name for the class.
-     *
-     * @param string $name
-     *
+     * @param $name
      * @return string
      */
-    protected function getPlurialName($name)
+    public function getLangPath($name)
     {
-        return strtolower($name) . 's';
+        return config('crud-generator.paths.lang') . '/' . Str::plural(strtolower(str_replace('\\', '/', $name)));
+    }
+
+    /**
+     * @param string $name
+     * @param $stub
+     */
+    public function replaceLangWords(string $name, &$stub)
+    {
+        $path_trans = $this->getLangPath($name);
+        $this->replaceWord($stub, $path_trans . '.plurial_name', 'trans_path_plurial');
+        $this->replaceWord($stub, $path_trans . '.gender', 'trans_path_gender');
+        $this->replaceWord($stub, $path_trans . '.name', 'trans_path_name');
     }
 }

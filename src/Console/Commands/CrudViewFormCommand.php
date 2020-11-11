@@ -2,6 +2,7 @@
 
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
+use Illuminate\Support\Str;
 use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
@@ -108,7 +109,11 @@ class CrudViewFormCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return $this->laravel['path'].'/../resources/views/admin/'.strtolower(str_replace('\\', '/', $name)).'s/_form.blade.php';
+        $path_base = '/../resources/views/';
+        $path_config = config('crud-generator.paths.views');
+        $name = Str::plural(strtolower(str_replace('\\', '/', $name)));
+
+        return $this->laravel['path']. $path_base . $path_config . '/' . $name . '/_form.blade.php';
     }
 
     /**
@@ -124,7 +129,7 @@ class CrudViewFormCommand extends GeneratorCommand
         $stub = $this->files->get($this->getStub());
 
         $this->replaceWord($stub, strtolower($name), 'item');
-        $this->replaceWord($stub, $this->getPlurialName($name) , 'items');
+        $this->replaceWord($stub, Str::plural(strtolower($name)) , 'items');
 
         return $stub;
     }

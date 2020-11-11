@@ -2,6 +2,7 @@
 
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
+use Illuminate\Support\Str;
 use KevinLbr\CrudGenerator\Traits\FillableCommande;
 use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
@@ -91,10 +92,10 @@ class CrudControllerCommand extends GeneratorCommand
         $stub = $this->files->get($this->getStub());
 
         return $this->replaceNamespace($stub, $name)
-            ->replaceWord($stub, $this->getPlurialName($name), 'dummy_directory')
+            ->replaceWord($stub, Str::plural(strtolower($name)), 'dummy_directory')
             ->replaceWord($stub, strtolower($name) . 's', 'dummy_route')
             ->replaceWord($stub, strtolower($name), 'item')
-            ->replaceWord($stub, $this->getPlurialName($name) , 'items')
+            ->replaceWord($stub, Str::plural(strtolower($name)) , 'items')
             ->replaceClass($stub, $name);
     }
 

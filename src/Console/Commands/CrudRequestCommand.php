@@ -2,6 +2,7 @@
 
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
+use Illuminate\Support\Str;
 use KevinLbr\CrudGenerator\Traits\FillableCommande;
 use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
@@ -52,8 +53,9 @@ class CrudRequestCommand extends GeneratorCommand
     protected function getPath($name)
     {
         $name = str_replace($this->laravel->getNamespace(), '', $name);
+        $format_name = str_replace('\\', '/', $name);
 
-        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'Request.php';
+        return $this->laravel['path'].'/'.$format_name.'Request.php';
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
+use Illuminate\Support\Str;
 use KevinLbr\CrudGenerator\Traits\FillableCommande;
 use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
@@ -109,7 +110,11 @@ class CrudLangCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return $this->laravel['path'].'/../resources/lang/fr/'.strtolower(str_replace('\\', '/', $name)).'s.php';
+        $path_base = '/../resources/lang/fr/';
+        $path_config = config('crud-generator.paths.lang');
+        $name = Str::plural(strtolower(str_replace('\\', '/', $name)));
+
+        return $this->laravel['path']. $path_base . $path_config . '/' . $name . '.php';
     }
 
     /**
@@ -151,7 +156,7 @@ class CrudLangCommand extends GeneratorCommand
         $content .= PHP_EOL;
         $content .= "\t" . "\t";
 
-        $content .= "'plurial_name' => '" . strtolower($name) . "s',";
+        $content .= "'plurial_name' => '" . Str::plural(strtolower($name)) . "',";
         $content .= PHP_EOL;
         $content .= "\t" . "\t";
 

@@ -3,6 +3,7 @@
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use KevinLbr\CrudGenerator\Traits\Util;
 
 /**
@@ -80,7 +81,11 @@ class CrudRoutesCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return $this->laravel['path'].'/../routes/admin/'. strtolower($name) . '.php';
+        $path_base = '/../routes/';
+        $path_config = config('crud-generator.paths.routes');
+        $name = strtolower($name);
+
+        return $this->laravel['path']. $path_base . $path_config . '/' . $name . '.php';
     }
 
     /**
@@ -95,7 +100,7 @@ class CrudRoutesCommand extends GeneratorCommand
     {
         $stub = $this->files->get($this->getStub());
 
-        $this->replaceWord($stub, $this->getPlurialName($name), "dummy_name");
+        $this->replaceWord($stub, Str::plural(strtolower($name)), "dummy_name");
         $name_controller = ucFirst(strtolower($name)) . 'Controller';
         $this->replaceWord($stub, $name_controller, "dummy_controller");
 
