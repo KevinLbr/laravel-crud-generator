@@ -1,6 +1,3 @@
 <td>
-    {{ $column->getValue() == 1
-        ? 'Oui'
-        : 'Non'
-    }}
+    {!! $column->getValueColumn() !!}
 </td>

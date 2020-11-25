@@ -108,4 +108,14 @@ class FieldNumberGenerator extends FieldGenerator
             ? $this->getOptions()[$this->getValue()]
             : $this->getValue();
     }
+
+    /**
+     * @return mixed|null
+     */
+    public function getCustomValueColumn()
+    {
+        return $this->hasOptions()
+            ? $this->getOptionSelected()
+            : $this->getValue();
+    }
 }

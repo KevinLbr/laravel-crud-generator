@@ -1,6 +1,3 @@
 <td>
-    {{ $column->hasOptions()
-        ? $column->getOptionSelected()
-        : $column->getValue()
-    }}
+    {!! $column->getValueColumn() !!}
 </td>

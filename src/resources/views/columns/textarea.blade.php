@@ -1,3 +1,3 @@
 <td>
-    {!! $column->getValue() !!}
+    {!! $column->getValueColumn() !!}
 </td>

@@ -23,16 +23,4 @@ class FieldTextareaGenerator extends FieldGenerator
 
         $this->setType(self::TYPE);
     }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        $method = "get{$this->getName()}Column";
-
-        return method_exists($this->entity, $method)
-            ? $this->entity->$method()
-            : $this->value;
-    }
 }

@@ -23,6 +23,16 @@ class FieldRadioGenerator extends FieldGenerator
         $this->setType(self::TYPE);
     }
 
+    /**
+     * @return string
+     */
+    public function getCustomValueColumn()
+    {
+        return $this->getValue() == 1
+            ? 'Oui'
+            : 'Non';
+    }
+
 //    TODO
 //    public function getValue()
 //    {

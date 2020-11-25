@@ -195,8 +195,20 @@ class FieldSelectGenerator extends FieldGenerator
             }
 
             // TODO throw
+            // valeur si null et pas foreign
             return (object)['name' => '--'];
         }
+    }
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getCustomValueColumn()
+    {
+        return $this->getItemSelect()->name != null
+            ? $this->getItemSelect()->name
+            : $this->getItemSelect()->id;
     }
 
     /**

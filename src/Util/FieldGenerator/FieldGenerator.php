@@ -259,4 +259,32 @@ class FieldGenerator
     {
         return $this->type;
     }
+
+    /**
+     * @return string
+     */
+    public function getCustomMethodGetColumn()
+    {
+        return "get{$this->getName()}Column";
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCustomValueColumn()
+    {
+        return $this->getValue();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValueColumn()
+    {
+        $method = $this->getCustomMethodGetColumn();
+
+        return method_exists($this->entity, $method)
+            ? $this->entity->$method()
+            : $this->getCustomValueColumn();
+    }
 }
