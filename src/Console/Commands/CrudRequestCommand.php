@@ -2,8 +2,7 @@
 
 namespace KevinLbr\CrudGenerator\Console\Commands;
 
-use Illuminate\Support\Str;
-use KevinLbr\CrudGenerator\Traits\FillableCommande;
+use KevinLbr\CrudGenerator\Traits\FillablesTrait;
 use KevinLbr\CrudGenerator\Traits\Util;
 use Illuminate\Console\GeneratorCommand;
 
@@ -80,7 +79,7 @@ class CrudRequestCommand extends GeneratorCommand
      */
     public function getFillables()
     {
-        $fillables = FillableCommande::getFillable($this->getNameInput());
+        $fillables = FillablesTrait::getFillables($this->getNameInput());
 
         $content = '';
         foreach($fillables as $fillable){

@@ -12,9 +12,9 @@ class DummyClassController extends Controller
     public function index()
     {
    	    $items = DummyClass::all();
-   	    $fillables = DummyClass::getFillablesModel();
+   	    $columns = DummyClass::getColumnsModel();
 
-   	    return view('admin.dummy_directory.index', compact('items', 'fillables'));
+   	    return view('admin.dummy_directory.index', compact('items', 'columns'));
     }
 
     public function create()

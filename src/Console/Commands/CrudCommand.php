@@ -5,6 +5,7 @@ namespace KevinLbr\CrudGenerator\Console\Commands;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 /**
  * Class CrudCommand
@@ -37,8 +38,8 @@ class CrudCommand extends Command
 
         // test if name parameter is correct to generate
         $generate = 'Yes';
-        if(!Schema::hasTable($name . 's')){
-            $this->info($name . 's table not found ! We can\'t generate fillable, and add media function if need it');
+        if(!Schema::hasTable(Str::plural($name))){
+            $this->info(Str::plural($name) . 'table not found ! We can\'t generate fillables, and add media function if need it');
             $generate = $this->choice('Continue ?', [true => 'Yes', false => 'No']);
         }
 

@@ -89,6 +89,26 @@ class FieldGenerator
     }
 
     /**
+     * Get field form
+     *
+     * @return mixed
+     */
+    public function getFieldsPath()
+    {
+        return config('crud-generator.paths.fields') . '.' . $this->getType();
+    }
+
+    /**
+     * Get field form
+     *
+     * @return mixed
+     */
+    public function getColumnsPath()
+    {
+        return config('crud-generator.paths.columns') . '.' . $this->getType();
+    }
+
+    /**
      * Set not null
      *
      * @param $value

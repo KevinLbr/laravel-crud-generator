@@ -4,6 +4,7 @@
 namespace KevinLbr\CrudGenerator\Traits;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 /**
  * Trait which generate form with columns
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\DB;
  * Trait FormGeneration
  * @package App\Traits
  */
-trait FillableCommande
+trait FillablesTrait
 {
     /**
      * @param string $nameCrud
@@ -19,14 +20,14 @@ trait FillableCommande
      */
     private static function getTableFromName(string $nameCrud)
     {
-        return strtolower($nameCrud . 's');
+        return strtolower(Str::plural($nameCrud));
     }
 
     /**
      * @param $nameCrud
      * @return array
      */
-    static function getFillable(string $nameCrud): array
+    static function getFillables(string $nameCrud): array
     {
         $table = self::getTableFromName($nameCrud);
 
@@ -46,9 +47,15 @@ trait FillableCommande
      * @return bool
      * @throws \Exception
      */
-    static function haveMediaColumn(string $nameCrud): bool
+    static function haveFileColumn(string $nameCrud): bool
     {
-        return self::haveColumn($nameCrud, 'media_id');
+        foreach(config('crud-generator.columns_are_files') as $column){
+            if($nameCrud == $column){
+                return self::haveColumn($nameCrud, $column);
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -58,7 +65,13 @@ trait FillableCommande
      */
     static function havePositionColumn(string $nameCrud): bool
     {
-        return self::haveColumn($nameCrud, 'position_id');
+        foreach(config('crud-generator.columns_are_position') as $column){
+            if($nameCrud == $column){
+                return self::haveColumn($nameCrud, $column);
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -68,6 +81,6 @@ trait FillableCommande
      */
     static function haveColumn(string $nameCrud, string $nameColumn): bool
     {
-        return in_array($nameColumn, self::getFillable($nameCrud));
+        return in_array($nameColumn, self::getFillables($nameCrud));
     }
 }

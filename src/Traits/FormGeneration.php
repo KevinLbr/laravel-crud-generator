@@ -4,6 +4,7 @@
 namespace KevinLbr\CrudGenerator\Traits;
 
 
+use Illuminate\Database\Eloquent\Model;
 use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldDateGenerator;
 use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldFileGenerator;
 use KevinLbr\CrudGenerator\Util\FieldGenerator\FieldGenerator;
@@ -24,37 +25,39 @@ use Illuminate\Support\Str;
 trait FormGeneration
 {
     /**
-     * @param array $fillables
+     * @param array $columns
      * @return mixed
      */
-    static function getFillablesModel(array $fillables = [])
+    static function getColumnsModel(array $columns = [])
     {
         $class = __CLASS__;
         $item = new $class();
 
-        return $item->generateFields($fillables);
+        return $item->generateFields($columns);
     }
 
     /**
      * Generate fields by default, with columns table
      *
-     * @param array|null $fillables
+     * @param array $columns
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function generateFields(array $fillables = [])
+    public function generateFields(array $columns = [])
     {
-        $fillables = $fillables == []
-            ? $this->getFillable()
-            : $fillables;
+        if ($columns == []) {
+            $columns = method_exists($this, "getCrudColumns")
+                ? $this->getCrudColumns()
+                : $this->getFillable();
+        }
 
         $data = [];
-        foreach ($fillables as $fillable) {
+        foreach ($columns as $column) {
             // fix enum type error
             DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
 
-            $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
-            $data[] = $this->getFieldGeneratorType($column, $this);
+            $columnBDD = DB::connection()->getDoctrineColumn($this->getTable(), $column);
+            $data[] = $this->getFieldGeneratorType($columnBDD, $this);
         }
 
         return collect($data);
@@ -63,17 +66,17 @@ trait FormGeneration
     /**
      * Generate field
      *
-     * @param string $fillable
+     * @param string $column
      * @return FieldGenerator
      * @throws \Exception
      */
-    public function generateField(string $fillable)
+    public function generateField(string $column)
     {
         // fix enum type error
         DB::getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
 
-        $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
-        return $this->getFieldGeneratorType($column, $this);
+        $columnBDD = DB::connection()->getDoctrineColumn($this->getTable(), $column);
+        return $this->getFieldGeneratorType($columnBDD, $this);
     }
 
     /**
@@ -81,8 +84,8 @@ trait FormGeneration
      *
      * ex : integer => number => /fields/number.blade.php exist
      *
-     * @param $column
-     * @param $entity
+     * @param string $column
+     * @param Model $entity
      * @return FieldGenerator
      * @throws \Exception
      */
@@ -122,15 +125,15 @@ trait FormGeneration
     }
 
     /**
-     * @param $fillable
+     * @param string $column
      * @return FieldGenerator
      * @throws \Exception
      */
-    public function getField($fillable)
+    public function getField(string $column)
     {
-        $column = DB::connection()->getDoctrineColumn($this->getTable(), $fillable);
+        $columnBDD = DB::connection()->getDoctrineColumn($this->getTable(), $column);
 
-        return $this->getFieldGeneratorType($column, $this);
+        return $this->getFieldGeneratorType($columnBDD, $this);
     }
 
     /**
@@ -152,6 +155,6 @@ trait FormGeneration
      */
     public function hasOptions($entity, string $name): bool
     {
-        return method_exists($entity, 'getOptions' . ucFirst(Str::camel($name)) . 's');
+        return method_exists($entity, 'getOptions' . ucFirst(Str::plural(Str::camel($name))));
     }
 }

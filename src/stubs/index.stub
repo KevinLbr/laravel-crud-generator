@@ -34,8 +34,8 @@
 					<thead>
 					<tr>
 						<th class="text-center">ID</th>
-						@foreach($fillables->take(5) as $fillable)
-							<th>{{ ucfirst($fillable->getLabel()) }}</th>
+						@foreach($columns->take(5) as $column)
+							<th>{{ ucfirst($column->getLabel()) }}</th>
 						@endforeach
 						<th class="text-right">Actions</th>
 					</tr>
@@ -45,7 +45,7 @@
 						<tr>
 							<td class="text-center">{{ $item->id }}</td>
 							@foreach($item->generateFields()->take(5) as $column)
-							    @include('vendor.crud-generator.columns.' . $column->getType(), ['column' => $column, 'entity' => $item])
+							    @include($column->getColumnsPath(), ['column' => $column, 'entity' => $item])
 							@endforeach
 
 							<td class="text-right">
