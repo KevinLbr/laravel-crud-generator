@@ -1,3 +1,8 @@
+# Laravel Crud Generator
+J'ai créer ce paquet Laravel car j'avais besoin de faire des CRUD regulierement, et c'etait l'occasion d'essayer de faire un paquet.
+
+Ce paquet sert a generer facilement et rapidement un CRUD
+
 # Getting started
 
 # Introduction
